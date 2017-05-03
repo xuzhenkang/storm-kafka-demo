@@ -1,4 +1,4 @@
-package cn.itcast.storm.spout;
+package cn.kang.storm.spout;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;

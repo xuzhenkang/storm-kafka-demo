@@ -1,4 +1,4 @@
-package cn.itcast.storm.topology;
+package cn.kang.storm.topology;
 
 import storm.kafka.BrokerHosts;
 import storm.kafka.KafkaSpout;
@@ -10,9 +10,9 @@ import backtype.storm.StormSubmitter;
 import backtype.storm.spout.SchemeAsMultiScheme;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
-import cn.itcast.storm.bolt.WordSpliter;
-import cn.itcast.storm.bolt.WriterBolt;
-import cn.itcast.storm.spout.MessageScheme;
+import cn.kang.storm.bolt.WordSpliterBolt;
+import cn.kang.storm.bolt.WriterBolt;
+import cn.kang.storm.spout.MessageScheme;
 
 public class KafkaTopo {
 public static void main(String[] args) throws Exception {
@@ -27,7 +27,7 @@ public static void main(String[] args) throws Exception {
 		TopologyBuilder builder = new TopologyBuilder();
 		//设置一个spout用来从kaflka消息队列中读取数据并发送给下一级的bolt组件，此处用的spout组件并非自定义的，而是storm中已经开发好的KafkaSpout
 		builder.setSpout("KafkaSpout", new KafkaSpout(spoutConfig));
-		builder.setBolt("word-spilter", new WordSpliter()).shuffleGrouping(spoutId);
+		builder.setBolt("word-spilter", new WordSpliterBolt()).shuffleGrouping(spoutId);
 		builder.setBolt("writer", new WriterBolt(), 4).fieldsGrouping("word-spilter", new Fields("word"));
 		Config conf = new Config();
 		conf.setNumWorkers(4);

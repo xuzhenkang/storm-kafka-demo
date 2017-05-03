@@ -1,4 +1,4 @@
-package cn.itcast.storm.bolt;
+package cn.kang.storm.bolt;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -9,7 +9,7 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
-public class WordSpliter extends BaseBasicBolt {
+public class WordSpliterBolt extends BaseBasicBolt {
 
 	private static final long serialVersionUID = -5653803832498574866L;
 

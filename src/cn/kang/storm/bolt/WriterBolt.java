@@ -1,4 +1,4 @@
-package cn.itcast.storm.bolt;
+package cn.kang.storm.bolt;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
